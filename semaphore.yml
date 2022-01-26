@@ -1,0 +1,25 @@
+version: v1.0
+name: Using execution_time_limit
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+execution_time_limit:
+  hours: 3
+
+blocks:
+  - name: Creating Docker Image
+    task:
+      jobs:
+      - name: Docker build
+        commands:
+          - checkout
+          - sleep 120
+
+  - name: Building executable
+    task:
+      jobs:
+      - name: Building job
+        commands:
+          - echo 360
+          - echo "Building executable"
